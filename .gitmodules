@@ -1,0 +1,3 @@
+[submodule "GalaxyFramework"]
+	path = GalaxyFramework
+	url = https://github.com/GalaxyTools/GalaxyFramework.git
