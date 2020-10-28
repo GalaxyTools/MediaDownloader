@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C8CFE0F7-FF41-45EF-A1F6-569F96F27033}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="GalaxyMediaDownloader.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GalaxyMediaDownloader">
+        <MSBuild Projects="GalaxyMediaDownloader.dproj"/>
+    </Target>
+    <Target Name="GalaxyMediaDownloader:Clean">
+        <MSBuild Projects="GalaxyMediaDownloader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GalaxyMediaDownloader:Make">
+        <MSBuild Projects="GalaxyMediaDownloader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GalaxyMediaDownloader"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GalaxyMediaDownloader:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GalaxyMediaDownloader:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
