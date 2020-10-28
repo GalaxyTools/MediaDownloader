@@ -1,3 +1,6 @@
 [submodule "GalaxyFramework"]
 	path = GalaxyFramework
 	url = https://github.com/GalaxyTools/GalaxyFramework.git
+[submodule "fmx-segmented-progressbar"]
+	path = fmx-segmented-progressbar
+	url = https://github.com/ms301/fmx-segmented-progressbar.git
