@@ -1,7 +1,7 @@
 object UiSuite: TUiSuite
   Hint = #1052#1072#1089#1090#1077#1088' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1082#1086#1089#1090#1102#1084#1086#1074
-  Size.Width = 361.000000000000000000
-  Size.Height = 482.000000000000000000
+  Size.Width = 466.000000000000000000
+  Size.Height = 421.000000000000000000
   Size.PlatformDefault = False
   object GroupBox1: TGroupBox
     Align = Top
@@ -9,7 +9,7 @@ object UiSuite: TUiSuite
     Padding.Top = 20.000000000000000000
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 5.000000000000000000
-    Size.Width = 361.000000000000000000
+    Size.Width = 466.000000000000000000
     Size.Height = 81.000000000000000000
     Size.PlatformDefault = False
     Text = #1044#1080#1072#1087#1072#1079#1086#1085' '#1076#1083#1103' '#1087#1086#1080#1089#1082#1072
@@ -18,7 +18,7 @@ object UiSuite: TUiSuite
       Align = Top
       Position.X = 5.000000000000000000
       Position.Y = 20.000000000000000000
-      Size.Width = 351.000000000000000000
+      Size.Width = 456.000000000000000000
       Size.Height = 24.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 39
@@ -36,7 +36,8 @@ object UiSuite: TUiSuite
         TabOrder = 1
         Cursor = crIBeam
         Max = 1E16
-        Size.Width = 262.000000000000000000
+        Value = 3000.000000000000000000
+        Size.Width = 367.000000000000000000
         Size.Height = 24.000000000000000000
         Size.PlatformDefault = False
       end
@@ -46,7 +47,7 @@ object UiSuite: TUiSuite
       Margins.Top = 5.000000000000000000
       Position.X = 5.000000000000000000
       Position.Y = 49.000000000000000000
-      Size.Width = 351.000000000000000000
+      Size.Width = 456.000000000000000000
       Size.Height = 24.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 38
@@ -64,7 +65,8 @@ object UiSuite: TUiSuite
         TabOrder = 1
         Cursor = crIBeam
         Max = 1E18
-        Size.Width = 262.000000000000000000
+        Value = 3030.000000000000000000
+        Size.Width = 367.000000000000000000
         Size.Height = 24.000000000000000000
         Size.PlatformDefault = False
       end
@@ -72,8 +74,8 @@ object UiSuite: TUiSuite
   end
   object Layout3: TLayout
     Align = Bottom
-    Position.Y = 440.000000000000000000
-    Size.Width = 361.000000000000000000
+    Position.Y = 379.000000000000000000
+    Size.Width = 466.000000000000000000
     Size.Height = 42.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
@@ -81,13 +83,13 @@ object UiSuite: TUiSuite
   object Layout4: TLayout
     Align = Top
     Position.Y = 81.000000000000000000
-    Size.Width = 361.000000000000000000
+    Size.Width = 466.000000000000000000
     Size.Height = 32.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 38
     object CheckBox1: TCheckBox
       Align = Client
-      Size.Width = 281.000000000000000000
+      Size.Width = 386.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -95,7 +97,7 @@ object UiSuite: TUiSuite
     end
     object Button1: TButton
       Align = Right
-      Position.X = 281.000000000000000000
+      Position.X = 386.000000000000000000
       Size.Width = 80.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False

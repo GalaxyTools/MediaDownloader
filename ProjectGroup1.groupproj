@@ -6,6 +6,9 @@
         <Projects Include="GalaxyMediaDownloader.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="fmx-segmented-progressbar\Demo\Demo.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -23,14 +26,23 @@
     <Target Name="GalaxyMediaDownloader:Make">
         <MSBuild Projects="GalaxyMediaDownloader.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Demo">
+        <MSBuild Projects="fmx-segmented-progressbar\Demo\Demo.dproj"/>
+    </Target>
+    <Target Name="Demo:Clean">
+        <MSBuild Projects="fmx-segmented-progressbar\Demo\Demo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Demo:Make">
+        <MSBuild Projects="fmx-segmented-progressbar\Demo\Demo.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="GalaxyMediaDownloader"/>
+        <CallTarget Targets="GalaxyMediaDownloader;Demo"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GalaxyMediaDownloader:Clean"/>
+        <CallTarget Targets="GalaxyMediaDownloader:Clean;Demo:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GalaxyMediaDownloader:Make"/>
+        <CallTarget Targets="GalaxyMediaDownloader:Make;Demo:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

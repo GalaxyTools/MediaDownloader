@@ -6,7 +6,7 @@ uses
   Galaxy.FileDriver,
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, FMX.Types, FMX.Graphics, FMX.Controls,
   FMX.Forms, FMX.Dialogs, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Edit, FMX.EditBox, FMX.NumberBox, FMX.Layouts,
-  FMX.SegmentedProgresBar;
+  FMX.SegmentedProgresBar, System.Threading;
 
 type
   TUiSuite = class(TFrame)
@@ -24,14 +24,16 @@ type
     procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
+    FTask: ITask;
     FProgBar: TSegmentedProgresBar;
     FFileDriver: TgFileDriver;
     FColorInWork: TAlphaColor;
     FColorDone: TAlphaColor;
     FColorError: TAlphaColor;
     procedure UpdateProgressBarCount;
-    function GetItemName(const I: integer; const IsHD: Boolean): string;
-    function ItemNameToIndex(const AName: string): integer;
+    function GetItemName(const I: Integer; const IsHD: Boolean): string;
+    function ItemNameToIndex(const AName: string): Integer;
+    procedure StartDownload;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -48,26 +50,6 @@ implementation
 
 {$R *.fmx}
 { TUiSuite }
-
-procedure TUiSuite.Button1Click(Sender: TObject);
-var
-  I: integer;
-begin
-  UpdateProgressBarCount;
-
-  for I := Round(NumberBox1.Value) to Round(NumberBox2.Value) do
-  begin
-    FProgBar.Segmet[I] := ColorInWork;
-    FFileDriver.Download(GetItemName(I, True),
-      procedure(AID, AFilename: string)
-      begin
-        if FileExists(AFilename) then
-          FProgBar.Segmet[ItemNameToIndex(AID)] := FColorDone
-        else
-          FProgBar.Segmet[ItemNameToIndex(AID)] := FColorError;
-      end);
-  end;
-end;
 
 constructor TUiSuite.Create(AOwner: TComponent);
 begin
@@ -90,23 +72,66 @@ begin
   inherited;
 end;
 
-function TUiSuite.GetItemName(const I: integer; const IsHD: Boolean): string;
+function TUiSuite.GetItemName(const I: Integer; const IsHD: Boolean): string;
 begin
   Result := (Round(NumberBox1.Value) + I).ToString;
 end;
 
-function TUiSuite.ItemNameToIndex(const AName: string): integer;
+function TUiSuite.ItemNameToIndex(const AName: string): Integer;
 begin
   Result := AName.ToInteger - Round(NumberBox1.Value);
 end;
 
+procedure TUiSuite.Button1Click(Sender: TObject);
+begin
+  UpdateProgressBarCount;
+  StartDownload;
+end;
+
+procedure TUiSuite.StartDownload;
+var
+  lMin: Integer;
+  lMax: Integer;
+begin
+  lMin := Round(NumberBox1.Value);
+  lMax := Round(NumberBox2.Value);
+  FTask := TTask.Run(
+    procedure
+    begin
+      TParallel.For(0, lMax - lMin - 1,
+        procedure(I: Integer)
+        begin
+          TThread.Synchronize(nil,
+            procedure
+            begin
+              FProgBar.Segmet[I] := ColorInWork;
+            end);
+
+          if FFileDriver.IsReady(GetItemName(I, True)) then
+          begin
+            FProgBar.Segmet[I] := FColorDone
+          end
+          else
+            FFileDriver.Download(GetItemName(I, True),
+              procedure(AID, AFilename: string)
+              begin
+                if FileExists(AFilename) then
+                  FProgBar.Segmet[ItemNameToIndex(AID)] := FColorDone
+                else
+                  FProgBar.Segmet[ItemNameToIndex(AID)] := FColorError;
+              end);
+        end);
+    end);
+end;
+
 procedure TUiSuite.UpdateProgressBarCount;
 var
-  lFrom, lTo: integer;
+  lFrom, lTo: Integer;
 begin
+  FProgBar.Clear;
   lFrom := Round(NumberBox1.Value);
   lTo := Round(NumberBox2.Value);
-  FProgBar.SegmentsCount := lTo + 1 - lFrom;
+  FProgBar.SegmentsCount := lTo - lFrom;
 end;
 
 initialization
