@@ -1,0 +1,9 @@
+{
+    "name": "Тела",
+    "description": "Тушки персонажей",
+    "downloadUrl": "hb/b%d",
+    "enumInfo": {
+        "From": 0,
+        "To": 250
+    }
+}

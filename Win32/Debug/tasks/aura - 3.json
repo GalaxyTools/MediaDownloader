@@ -1,0 +1,9 @@
+{
+    "name": "Ауры (Бог)",
+    "description": "Скачивает все ауры авторитета Бог",
+    "downloadUrl": "aura/%d_3",
+    "enumInfo": {
+        "From": 0,
+        "To": 300
+    }
+}

@@ -1,79 +1,22 @@
 object UiMain: TUiMain
   Left = 0
   Top = 0
-  Caption = 'Form10'
-  ClientHeight = 487
-  ClientWidth = 324
+  Caption = 'GalaxyMediaDownloader'
+  ClientHeight = 300
+  ClientWidth = 400
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   DesignerMasterStyle = 0
-  object ToolBar1: TToolBar
-    Size.Width = 324.000000000000000000
-    Size.Height = 40.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 1
-    object Button1: TButton
-      Align = Left
-      Size.Width = 50.000000000000000000
-      Size.Height = 40.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'drawertoolbutton'
-      TabOrder = 0
-      Text = 'Button1'
-    end
-    object Label1: TLabel
-      Align = Client
-      StyledSettings = [Family, Style, FontColor]
-      Padding.Left = 10.000000000000000000
-      Padding.Top = 2.000000000000000000
-      Padding.Right = 10.000000000000000000
-      Padding.Bottom = 2.000000000000000000
-      Size.Width = 274.000000000000000000
-      Size.Height = 40.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'toollabel'
-      TextSettings.Font.Size = 14.000000000000000000
-      TabOrder = 1
-    end
-  end
-  object Layout1: TLayout
+  object VertScrollBox1: TVertScrollBox
     Align = Client
-    Margins.Left = 50.000000000000000000
-    Size.Width = 274.000000000000000000
-    Size.Height = 447.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 2
-  end
-  object MultiView1: TMultiView
-    TargetControl = Layout1
-    MasterButton = Button1
-    Size.Width = 250.000000000000000000
-    Size.Height = 50.000000000000000000
+    Size.Width = 400.000000000000000000
+    Size.Height = 300.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
-    object ListBox1: TListBox
-      Align = Client
-      Size.Width = 50.000000000000000000
-      Size.Height = 447.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = 'listboxstyle'
-      TabOrder = 0
-      DisableFocusEffect = True
-      DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
-      DefaultItemStyles.GroupHeaderStyle = ''
-      DefaultItemStyles.GroupFooterStyle = ''
-      Viewport.Width = 50.000000000000000000
-      Viewport.Height = 447.000000000000000000
-      object ListBoxItem1: TListBoxItem
-        Size.Width = 46.000000000000000000
-        Size.Height = 30.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 0
-        Text = #1050#1086#1089#1090#1102#1084#1099
-      end
-    end
+    Viewport.Width = 400.000000000000000000
+    Viewport.Height = 300.000000000000000000
   end
 end

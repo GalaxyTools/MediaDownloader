@@ -18,10 +18,11 @@ type
     Layout2: TLayout;
     Label2: TLabel;
     NumberBox2: TNumberBox;
-    CheckBox1: TCheckBox;
     Layout4: TLayout;
     Button1: TButton;
+    Label3: TLabel;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
     FTask: ITask;
@@ -31,7 +32,7 @@ type
     FColorDone: TAlphaColor;
     FColorError: TAlphaColor;
     procedure UpdateProgressBarCount;
-    function GetItemName(const I: Integer; const IsHD: Boolean): string;
+    function GetItemName(const I: Integer): string;
     function ItemNameToIndex(const AName: string): Integer;
     procedure StartDownload;
   public
@@ -51,6 +52,41 @@ implementation
 {$R *.fmx}
 { TUiSuite }
 
+procedure TUiSuite.Button2Click(Sender: TObject);
+
+begin
+  FProgBar.SegmentsCount := 100;
+
+  TTask.Run(
+    procedure
+    var
+      I: Integer;
+      x: Integer;
+    begin
+      x := -1;
+      for I := 0 to FProgBar.SegmentsCount - 2 do
+      begin
+        TTask.Run(
+          procedure
+          begin
+            Inc(x);
+            TThread.Synchronize(nil,
+              procedure
+              begin
+                FProgBar.Segmet[x] := ColorInWork;
+              end);
+            Sleep(3000);
+            TThread.Synchronize(nil,
+              procedure
+              begin
+                FProgBar.Segmet[x] := ColorDone;
+              end);
+          end);
+      end;
+    end);
+
+end;
+
 constructor TUiSuite.Create(AOwner: TComponent);
 begin
   inherited;
@@ -58,7 +94,7 @@ begin
   FProgBar.Parent := Layout3;
   FProgBar.Align := TAlignLayout.Client;
   FProgBar.BackgroundColor := TAlphaColorRec.Beige;
-  FFileDriver := TgFileDriver.Create(ParamStr(0) + 'Resource\');
+  FFileDriver := TgFileDriver.Create(ParamStr(0) + '\Resource\');
 
   ColorInWork := TAlphaColorRec.Blue;
   ColorDone := TAlphaColorRec.Green;
@@ -72,12 +108,14 @@ begin
   inherited;
 end;
 
-function TUiSuite.GetItemName(const I: Integer; const IsHD: Boolean): string;
+function TUiSuite.GetItemName(const I: Integer): string;
 begin
   Result := (Round(NumberBox1.Value) + I).ToString;
 end;
 
-function TUiSuite.ItemNameToIndex(const AName: string): Integer;
+function TUiSuite.ItemNameToIndex(
+
+  const AName: string): Integer;
 begin
   Result := AName.ToInteger - Round(NumberBox1.Value);
 end;
@@ -107,12 +145,12 @@ begin
               FProgBar.Segmet[I] := ColorInWork;
             end);
 
-          if FFileDriver.IsReady(GetItemName(I, True)) then
+          if FFileDriver.IsReady(GetItemName(I)) then
           begin
             FProgBar.Segmet[I] := FColorDone
           end
           else
-            FFileDriver.Download(GetItemName(I, True),
+            FFileDriver.Download(GetItemName(I),
               procedure(AID, AFilename: string)
               begin
                 if FileExists(AFilename) then

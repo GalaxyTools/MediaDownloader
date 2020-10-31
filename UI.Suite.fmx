@@ -9,6 +9,7 @@ object UiSuite: TUiSuite
     Padding.Top = 20.000000000000000000
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 5.000000000000000000
+    Position.Y = 65.000000000000000000
     Size.Width = 466.000000000000000000
     Size.Height = 81.000000000000000000
     Size.PlatformDefault = False
@@ -36,7 +37,7 @@ object UiSuite: TUiSuite
         TabOrder = 1
         Cursor = crIBeam
         Max = 1E16
-        Value = 3000.000000000000000000
+        Value = 2000.000000000000000000
         Size.Width = 367.000000000000000000
         Size.Height = 24.000000000000000000
         Size.PlatformDefault = False
@@ -65,7 +66,7 @@ object UiSuite: TUiSuite
         TabOrder = 1
         Cursor = crIBeam
         Max = 1E18
-        Value = 3030.000000000000000000
+        Value = 25000.000000000000000000
         Size.Width = 367.000000000000000000
         Size.Height = 24.000000000000000000
         Size.PlatformDefault = False
@@ -82,28 +83,32 @@ object UiSuite: TUiSuite
   end
   object Layout4: TLayout
     Align = Top
-    Position.Y = 81.000000000000000000
+    Position.Y = 33.000000000000000000
     Size.Width = 466.000000000000000000
     Size.Height = 32.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 38
-    object CheckBox1: TCheckBox
-      Align = Client
-      Size.Width = 386.000000000000000000
-      Size.Height = 32.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 0
-      Text = 'HD-'#1082#1072#1095#1077#1089#1090#1074#1086
-    end
+    TabOrder = 37
     object Button1: TButton
       Align = Right
       Position.X = 386.000000000000000000
       Size.Width = 80.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 1
+      TabOrder = 0
       Text = #1057#1090#1072#1088#1090
       OnClick = Button1Click
     end
+  end
+  object Label3: TLabel
+    Align = Top
+    StyledSettings = [Family, FontColor]
+    Size.Width = 466.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Center
+    Text = #1057#1090#1072#1088#1099#1077' '#1082#1086#1089#1090#1102#1084#1099' '#1080' '#1080#1085#1090#1077#1088#1100#1077#1088#1099' ('#1076#1086' 2020 '#1075#1086#1076#1072')'
+    TabOrder = 39
   end
 end

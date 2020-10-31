@@ -1,0 +1,9 @@
+{
+    "name": "Стандартные головы",
+    "description": "ОЧЕНЬ ДОЛГИЙ ПЕРЕБОР!!!",
+    "downloadUrl": "hb/%d",
+    "enumInfo": {
+        "From": 0,
+        "To": 10000
+    }
+}

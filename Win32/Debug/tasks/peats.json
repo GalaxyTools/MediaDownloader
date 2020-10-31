@@ -1,0 +1,9 @@
+{
+    "name": "Питомцы",
+    "description": "",
+    "downloadUrl": "p/%d",
+    "enumInfo": {
+        "From": 0,
+        "To": 300
+    }
+}

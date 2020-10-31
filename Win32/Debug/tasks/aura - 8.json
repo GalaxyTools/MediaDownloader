@@ -1,0 +1,9 @@
+{
+    "name": "Ауры (Страж)",
+    "description": "Скачивает все ауры авторитета Страж",
+    "downloadUrl": "aura/%d_8",
+    "enumInfo": {
+        "From": 0,
+        "To": 300
+    }
+}
