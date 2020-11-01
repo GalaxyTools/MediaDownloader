@@ -24,6 +24,7 @@ uses
 type
   TUiMain = class(TForm)
     VertScrollBox1: TVertScrollBox;
+    StyleBook1: TStyleBook;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
 
@@ -59,7 +60,7 @@ uses
 procedure TUiMain.BuildView(ATask: TgrDownloadTask);
 var
   lContainer: TPanel;
-  lText: TText;
+  lText: TLabel;
 begin
   lContainer := TPanel.Create(VertScrollBox1);
   lContainer.Height := 50;
@@ -84,11 +85,11 @@ begin
   FSwitches.Last.Align := TAlignLayout.Left;
   FSwitches.Last.Width := 50;
   lContainer.AddObject(FSwitches.Last);
-  lText := TText.Create(lContainer);
+  lText := TLabel.Create(lContainer);
   lText.Parent := lContainer;
   lText.Align := TAlignLayout.Client;
   lText.Text := ATask.Name + #13#10 + ATask.Description;
-  lText.Color := TAlphaColorRec.Black;
+//  lText.Color := TAlphaColorRec.Black;
 end;
 
 procedure TUiMain.FormCreate(Sender: TObject);

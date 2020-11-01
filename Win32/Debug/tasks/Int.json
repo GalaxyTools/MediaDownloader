@@ -1,0 +1,9 @@
+{
+    "name": "Интерьеры",
+    "description": "",
+    "downloadUrl": "int/%d",
+    "enumInfo": {
+        "From": 2400,
+        "To": 12000
+    }
+}
